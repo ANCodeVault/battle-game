@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace App\Characters;
 
-
-use App\Behaviors\WeaponBehaviorInterface;
-
 class Character
 {
+
     private int $health = 100;
     private string $name;
 
@@ -49,4 +47,5 @@ class Character
     {
         $this->strength = $value;
     }
+
 }

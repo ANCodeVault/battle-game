@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-
+use App\Characters\Character;
 use App\Characters\Elf;
 use App\Characters\King;
 use App\Characters\Knight;
@@ -12,7 +12,7 @@ use App\Characters\Orc;
 
 class CreatePlayer
 {
-    public function create()
+    public function create(): Character
     {
         $player = $this->getCharacter();
         $name = PlayerName::get();
@@ -23,7 +23,7 @@ class CreatePlayer
         return $player;
     }
 
-    private function getCharacter(): object
+    private function getCharacter(): Character
     {
         $character = [
             new King(),
@@ -40,4 +40,5 @@ class CreatePlayer
     {
         return mt_rand(10, 25);
     }
+
 }

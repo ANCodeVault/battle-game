@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Characters\Character;
 
 class Game
 {
+
     private array $battle = [];
 
     public function start(): array
     {
-        $createPlayer = new \App\CreatePlayer();
+        $createPlayer = new CreatePlayer();
         $playerOne = $createPlayer->create();
         $playerTwo = $createPlayer->create();
 
@@ -20,7 +22,11 @@ class Game
         return $this->fight($playerOne, $playerTwo, $behavior);
     }
 
-    private function fight(object $playerOne, object $playerTwo, object $behavior)
+    private function fight(
+        Character $playerOne,
+        Character $playerTwo,
+        Behavior $behavior,
+    ): array
     {
         $playerOneHealth = $playerOne->getHealth();
         $playerTwoHealth = $playerTwo->getHealth();
@@ -75,7 +81,16 @@ class Game
         return $this->battle;
     }
 
-    private function battleRecords(int $round, int $player, string $race, string $name, int $life, string $weapon, string $enemy, int $hit): void
+    private function battleRecords(
+        int $round,
+        int $player,
+        string $race,
+        string $name,
+        int $life,
+        string $weapon,
+        string $enemy,
+        int $hit,
+    ): void
     {
         $this->battle[$round][$player] = [
             'race' => $race,
@@ -89,6 +104,7 @@ class Game
 
     private function attackPower(int $strength): int
     {
-        return \mt_rand(1, $strength);
+        return mt_rand(1, $strength);
     }
+
 }
