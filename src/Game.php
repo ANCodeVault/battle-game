@@ -22,6 +22,30 @@ class Game
         return $this->fight($playerOne, $playerTwo, $behavior);
     }
 
+    public function getBattle(array $battles): string
+    {
+        $str = '';
+        foreach ($battles as $round => $characters) {
+            $str .= "<b>Раунд: {$round}</b>\n<br>";
+            foreach ($characters as $player => $battle) {
+                if ('end' != $player) {
+                    $str .= "Игрок {$player}: 
+                <b>Раса:</b> {$battle['race']} 
+                <b>Имя:</b> {$battle['name']},  
+                <b>Оружие:</b> {$battle['weapon']}, 
+                <b>Противник</b> {$battle['enemy']} нанес {$battle['hit']} удар, 
+                <b>Жизнь:</b> {$battle['life']}<br>\n";
+                } else {
+                    $str .= $battle['name'];
+                }
+            }
+            $str .= "<hr>";
+        }
+
+        return $str;
+    }
+
+
     private function fight(
         Character $playerOne,
         Character $playerTwo,
