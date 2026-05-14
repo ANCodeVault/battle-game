@@ -39,7 +39,7 @@ class Game
 
     public function start(): array
     {
-        $createPlayer = new CreatePlayer();
+        $createPlayer = new Player();
         $playerOne = $createPlayer->create();
         $playerTwo = $createPlayer->create();
 

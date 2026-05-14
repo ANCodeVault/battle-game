@@ -10,7 +10,7 @@ use App\Characters\King;
 use App\Characters\Knight;
 use App\Characters\Orc;
 
-class CreatePlayer
+class Player
 {
     public function create(): Character
     {
