@@ -13,8 +13,4 @@ function debug($arr): void
     echo '</pre>' . PHP_EOL;
 }
 
-
-$game = new \App\Game();
-$battles = $game->start();
-
-echo getBattle($battles);
+echo new \App\Game()->run();

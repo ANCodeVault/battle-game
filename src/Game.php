@@ -22,9 +22,12 @@ class Game
         return $this->fight($playerOne, $playerTwo, $behavior);
     }
 
-    public function run(array $battles): string
+    public function run(): string
     {
+        $battles = $this->start();
+
         $str = '';
+
         foreach ($battles as $round => $characters) {
             $str .= "<b>Раунд: {$round}</b>\n<br>";
             foreach ($characters as $player => $battle) {
