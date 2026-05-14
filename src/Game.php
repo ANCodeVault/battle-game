@@ -22,7 +22,7 @@ class Game
         return $this->fight($playerOne, $playerTwo, $behavior);
     }
 
-    public function getBattle(array $battles): string
+    public function run(array $battles): string
     {
         $str = '';
         foreach ($battles as $round => $characters) {
