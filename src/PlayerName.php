@@ -9,7 +9,7 @@ class PlayerName
 
     public static function get(): string
     {
-        $name = require __DIR__ . '/config/player_name.php';
+        $name = require __DIR__ . '/../config/player_name.php';
         $key = array_rand($name);
 
         return $name[$key];
