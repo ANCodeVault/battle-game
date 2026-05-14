@@ -57,7 +57,8 @@ class Game
         $playerOneHealth = $playerOne->getHealth();
         $playerTwoHealth = $playerTwo->getHealth();
 
-        $i = 1;
+        $roundCounter = 1;
+
         while (true) {
             $playerOneKick = $this->attackPower($playerOne->getStrength());
             $playerTwoKick = $this->attackPower($playerTwo->getStrength());
@@ -79,7 +80,7 @@ class Game
                     $race = $playerTwo->getRace();
                 }
 
-                $this->battle[$i]['end']['name'] = "В этом бою ОТВАЖНО ПОГИБ <b>{$race} {$name}</b>";
+                $this->battle[$roundCounter]['end']['name'] = "В этом бою ОТВАЖНО ПОГИБ <b>{$race} {$name}</b>";
                 break;
             }
 
@@ -92,16 +93,16 @@ class Game
             $behaviorTwo = $weaponTwo;
 
             $this->battleRecords(
-                $i, 1, $playerOne->getRace(), $playerOne->getName(),
+                $roundCounter, 1, $playerOne->getRace(), $playerOne->getName(),
                 $playerOneHealth, $behaviorOne, $playerTwo->getRace(), $playerTwoKick
             );
 
             $this->battleRecords(
-                $i, 2, $playerTwo->getRace(), $playerTwo->getName(),
+                $roundCounter, 2, $playerTwo->getRace(), $playerTwo->getName(),
                 $playerTwoHealth, $behaviorTwo, $playerOne->getRace(), $playerOneKick
             );
 
-            $i++;
+            $roundCounter++;
         }
 
         return $this->battle;
