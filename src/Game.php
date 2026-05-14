@@ -11,17 +11,6 @@ class Game
 
     private array $battle = [];
 
-    public function start(): array
-    {
-        $createPlayer = new CreatePlayer();
-        $playerOne = $createPlayer->create();
-        $playerTwo = $createPlayer->create();
-
-        $behavior = new Behavior();
-
-        return $this->fight($playerOne, $playerTwo, $behavior);
-    }
-
     public function run(): string
     {
         $battles = $this->start();
@@ -48,6 +37,16 @@ class Game
         return $str;
     }
 
+    public function start(): array
+    {
+        $createPlayer = new CreatePlayer();
+        $playerOne = $createPlayer->create();
+        $playerTwo = $createPlayer->create();
+
+        $behavior = new Behavior();
+
+        return $this->fight($playerOne, $playerTwo, $behavior);
+    }
 
     private function fight(
         Character $playerOne,
